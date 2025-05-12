@@ -1,21 +1,48 @@
 package com.example.postsline.controller;
 
+import com.example.postsline.dto.PostInfoDto;
 import com.example.postsline.service.LineService;
+import com.example.postsline.valid.ValidParamsForPostList;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
+@Slf4j
 @RestController
 @RequestMapping("/post-line")
 @RequiredArgsConstructor
+@Validated
 public class LineController {
 
     private final LineService lineService;
 
-    @GetMapping("test")
-    public ResponseEntity<?> test() {
-        return ResponseEntity.ok(lineService.test());
+    @GetMapping("/all")
+    public ResponseEntity<List<PostInfoDto>> getAllPostInfo() {
+
+        return ResponseEntity.ok(
+                lineService.getAllPostInfoList()
+        );
+
+    }
+
+    @GetMapping("/by-params")
+    @ValidParamsForPostList
+    public ResponseEntity<List<PostInfoDto>> getPostInfoListByParams(
+            @RequestParam(required = false) Integer pageable,
+            @RequestParam(required = false) Boolean isSortedByLikes,
+            @RequestParam(required = false) String searchedBy
+    ) {
+        log.info("{} {} {}", pageable,isSortedByLikes, searchedBy);
+        return ResponseEntity.ok(
+                lineService.getAllPostInfoList()
+        );
+
     }
 }
