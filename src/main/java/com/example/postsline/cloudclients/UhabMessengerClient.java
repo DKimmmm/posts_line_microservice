@@ -3,7 +3,7 @@ package com.example.postsline.cloudclients;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
-@FeignClient(name = "user-service")
+@FeignClient(name = "user-service", url = "http://localhost:8081/uhab")
 public interface UhabMessengerClient {
 
     @GetMapping(value = "/authorization/test/string")
