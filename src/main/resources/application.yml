@@ -1,0 +1,11 @@
+server:
+  port: 8099
+
+spring:
+  application:
+    name: postsline-service
+feign:
+  client:
+    config:
+      user-service:
+        url: http://localhost:8081/uhab
