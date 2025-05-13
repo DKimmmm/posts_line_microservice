@@ -1,6 +1,6 @@
 package com.example.postsline.controller;
 
-import com.example.postsline.dto.PostInfoDto;
+import com.example.postsline.dto.PostWithLikesInfoDto;
 import com.example.postsline.service.LineService;
 import com.example.postsline.valid.ValidParamsForPostList;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +24,7 @@ public class LineController {
     private final LineService lineService;
 
     @GetMapping("/all")
-    public ResponseEntity<List<PostInfoDto>> getAllPostInfo() {
+    public ResponseEntity<List<PostWithLikesInfoDto>> getAllPostInfo() {
 
         return ResponseEntity.ok(
                 lineService.getAllPostInfoList()
@@ -34,7 +34,7 @@ public class LineController {
 
     @GetMapping("/by-params")
     @ValidParamsForPostList
-    public ResponseEntity<List<PostInfoDto>> getPostInfoListByParams(
+    public ResponseEntity<List<PostWithLikesInfoDto>> getPostInfoListByParams(
             @RequestParam(required = false) Integer pageSize,
             @RequestParam(required = false) Boolean isSortedByLikes,
             @RequestParam(required = false) String searchedBy

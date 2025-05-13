@@ -1,7 +1,7 @@
 package com.example.postsline.service;
 
 import com.example.postsline.cloudclients.UhabMessengerClient;
-import com.example.postsline.dto.PostInfoDto;
+import com.example.postsline.dto.PostWithLikesInfoDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ public class LineService {
 
     private final UhabMessengerClient messengerClient;
 
-    public List<PostInfoDto> getAllPostInfoList() {
+    public List<PostWithLikesInfoDto> getAllPostInfoList() {
 
         log.info("- -  @GetMapping(value = \"/post-line/post-info/all\") ");
         return messengerClient.getAllPosts();

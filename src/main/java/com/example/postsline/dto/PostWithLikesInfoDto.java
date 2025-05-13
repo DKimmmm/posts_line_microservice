@@ -12,7 +12,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class PostInfoDto {
+public class PostWithLikesInfoDto {
 
     private UUID postId;
 
@@ -21,5 +21,7 @@ public class PostInfoDto {
     private String description;
 
     private List<UUID> imagesIds;
+
+    private Integer likeCount;
 
 }
