@@ -18,11 +18,13 @@ public class ValidParamsForPostListValidator implements ConstraintValidator<Vali
         if (args.length != 3) {
             return false;
         }
+
         if (Objects.nonNull(args[0])) {
-            if (!(args[0] instanceof Integer) || !pageableIsGood((Integer) args[0])) {
+            if (!(args[0] instanceof Integer) || !pageSizeIsGood((Integer) args[0])) {
                 return false;
             }
         }
+
         if (Objects.nonNull(args[2])) {
             return args[2] instanceof String && searchedByIsGood((String) args[2]);
         } else
@@ -30,9 +32,9 @@ public class ValidParamsForPostListValidator implements ConstraintValidator<Vali
 
     }
 
-    private boolean pageableIsGood(Integer arg) {
+    private boolean pageSizeIsGood(Integer pageSize) {
 
-        return arg >= 0 && arg <= 100;
+        return pageSize >= 1 && pageSize <= 100;
 
     }
 
