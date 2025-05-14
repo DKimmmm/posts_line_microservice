@@ -37,6 +37,7 @@ public class LineController {
     public ResponseEntity<List<PostWithLikesInfoDto>> getPostInfoListByParams(
             @RequestParam(required = false) Integer pageSize,
             @RequestParam(required = false) Boolean isSortedByLikes,
+            @RequestParam(required = false) Boolean isSortedByComments,
             @RequestParam(required = false) String searchedBy
     ) {
         log.info("{} {} {}", pageSize,isSortedByLikes, searchedBy);
