@@ -16,7 +16,7 @@ public class RemoveScheduleService {
     private final static Integer DAYS_FOR_REMOVE_MARK = 2;
     private final static Integer DAYS_FOR_REMOVE = 15;
 
-    @Scheduled(cron = "10 31 16 * * *")
+    @Scheduled(cron = "59 59 23 * * *")
     public void removeOrMarkForItSchedule(){
 
         log.info("scheduling working");
