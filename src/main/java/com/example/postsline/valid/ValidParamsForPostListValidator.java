@@ -15,7 +15,7 @@ public class ValidParamsForPostListValidator implements ConstraintValidator<Vali
     @Override
     public boolean isValid(Object[] args, ConstraintValidatorContext context) {
 
-        if (args.length != 4) {
+        if (args.length != 3) {
             return false;
         }
 
@@ -25,8 +25,8 @@ public class ValidParamsForPostListValidator implements ConstraintValidator<Vali
             }
         }
 
-        if (Objects.nonNull(args[3])) {
-            return args[3] instanceof String && searchedByIsGood((String) args[3]);
+        if (Objects.nonNull(args[2])) {
+            return args[2] instanceof String && searchedByIsGood((String) args[2]);
         } else
             return true;
 
