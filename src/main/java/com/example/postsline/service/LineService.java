@@ -61,9 +61,9 @@ public class LineService {
 
     }
 
-    private void cutByPageSize(List<PostWithLikesInfoDto> list, int pageSize) {
+    private void cutByPageSize(List<PostWithLikesInfoDto> list, Integer pageSize) {
 
-        if (list.size() > pageSize) {
+        if (Objects.nonNull(pageSize) && list.size() > pageSize) {
             list.subList(pageSize, list.size()).clear();
         }
 
