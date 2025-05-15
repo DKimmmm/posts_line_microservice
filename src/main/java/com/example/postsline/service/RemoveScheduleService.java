@@ -16,7 +16,7 @@ public class RemoveScheduleService {
 
     private final UhabMessengerClient uhabMessengerClient;
 
-    @Scheduled(cron = "0 0/15 * * * *")
+//    @Scheduled(cron = "0 0/15 * * * *")
     public void removeOrMarkForItSchedule(){
 
         log.info("scheduling working");

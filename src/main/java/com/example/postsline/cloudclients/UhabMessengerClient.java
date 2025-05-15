@@ -14,6 +14,12 @@ public interface UhabMessengerClient {
     @GetMapping(value = "/post-line/post-info/all")
     List<PostWithLikesInfoDto> getAllPosts();
 
+    @GetMapping(value = "/post-line/post-info/by/specification")
+    List<PostWithLikesInfoDto> getAllPostsByParams(@RequestParam Integer pageSize,
+                                                   @RequestParam Boolean isSortedByLikes,
+                                                   @RequestParam Boolean isSortedByComments,
+                                                   @RequestParam String searchedBy);
+
     @DeleteMapping(value = "/post/old-scheduler")
     void schedulePostRemove(@RequestParam Integer markThresholdDays,
                             @RequestParam Integer alreadyDelThresholdDays);

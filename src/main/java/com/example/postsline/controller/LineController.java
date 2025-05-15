@@ -34,12 +34,13 @@ public class LineController {
     @GetMapping("/by-params")
     @ValidParamsForPostList
     public ResponseEntity<List<PostWithLikesInfoDto>> getPostInfoListByParams(@RequestParam(required = false) Integer pageSize,
-                                                                              @RequestParam(required = false) Boolean isSortedByLikesAndComments,
+                                                                              @RequestParam(required = false) Boolean isSortedByLikes,
+                                                                              @RequestParam(required = false) Boolean isSortedByComments,
                                                                               @RequestParam(required = false) String searchedBy) {
 
         return ResponseEntity.ok(
                 lineService.getAllByParams(
-                        pageSize, isSortedByLikesAndComments, searchedBy
+                        pageSize, isSortedByLikes, isSortedByComments, searchedBy
                 )
         );
 

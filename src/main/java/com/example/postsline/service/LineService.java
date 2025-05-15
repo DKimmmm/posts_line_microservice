@@ -26,47 +26,42 @@ public class LineService {
     }
 
     public List<PostWithLikesInfoDto> getAllByParams(Integer pageSize,
-                                                     Boolean isSortedByLikesAndComments,
+                                                     Boolean isSortedByLikes,
+                                                     Boolean isSortedByComments,
                                                      String searchedBy) {
 
-        List<PostWithLikesInfoDto> withoutSortedResultList = getAllPostInfoList();
-
-        sortedByLikesAndComments(withoutSortedResultList, isSortedByLikesAndComments);
-
-        searchingByWords(withoutSortedResultList, searchedBy);
-
-        cutByPageSize(withoutSortedResultList, pageSize);
-
-        return withoutSortedResultList;
+        return messengerClient.getAllPostsByParams(
+                pageSize, isSortedByLikes, isSortedByComments, searchedBy
+        );
 
     }
 
-    private void searchingByWords(List<PostWithLikesInfoDto> withoutSortedResultList, String searchedBy) {
-
-        if (Objects.nonNull(searchedBy)) {
-
-            withoutSortedResultList.sort(compareBySearchingWords(searchedBy));
-
-        }
-
-    }
-
-    private void sortedByLikesAndComments(List<PostWithLikesInfoDto> withoutSortedResultList, Boolean isSortedByLikesAndComments) {
-
-        if (Objects.nonNull(isSortedByLikesAndComments) && isSortedByLikesAndComments) {
-
-            withoutSortedResultList.sort(compareByLikesAndCommentsCount);
-
-        }
-
-    }
-
-    private void cutByPageSize(List<PostWithLikesInfoDto> list, Integer pageSize) {
-
-        if (Objects.nonNull(pageSize) && list.size() > pageSize) {
-            list.subList(pageSize, list.size()).clear();
-        }
-
-    }
+//    private void searchingByWords(List<PostWithLikesInfoDto> withoutSortedResultList, String searchedBy) {
+//
+//        if (Objects.nonNull(searchedBy)) {
+//
+//            withoutSortedResultList.sort(compareBySearchingWords(searchedBy));
+//
+//        }
+//
+//    }
+//
+//    private void sortedByLikesAndComments(List<PostWithLikesInfoDto> withoutSortedResultList, Boolean isSortedByLikesAndComments) {
+//
+//        if (Objects.nonNull(isSortedByLikesAndComments) && isSortedByLikesAndComments) {
+//
+//            withoutSortedResultList.sort(compareByLikesAndCommentsCount);
+//
+//        }
+//
+//    }
+//
+//    private void cutByPageSize(List<PostWithLikesInfoDto> list, Integer pageSize) {
+//
+//        if (Objects.nonNull(pageSize) && list.size() > pageSize) {
+//            list.subList(pageSize, list.size()).clear();
+//        }
+//
+//    }
 
 }
