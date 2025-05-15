@@ -20,6 +20,7 @@ public class PostLineComparator {
     }
 
     public final static class PostSearchComparator implements Comparator<PostWithLikesInfoDto> {
+
         private final String searchQuery;
 
         public PostSearchComparator(String searchQuery) {

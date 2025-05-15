@@ -6,6 +6,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import static com.example.postsline.util.UtilScheduleParams.DAYS_FOR_REMOVE;
+import static com.example.postsline.util.UtilScheduleParams.DAYS_FOR_REMOVE_MARK;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -13,13 +16,10 @@ public class RemoveScheduleService {
 
     private final UhabMessengerClient uhabMessengerClient;
 
-    private final static Integer DAYS_FOR_REMOVE_MARK = 2;
-    private final static Integer DAYS_FOR_REMOVE = 15;
-
-    @Scheduled(cron = "59 59 23 * * *")
+    @Scheduled(cron = "* 0/15 * * * *")
     public void removeOrMarkForItSchedule(){
 
-        log.info("scheduling working");
+        log.debug("scheduling working");
         uhabMessengerClient.schedulePostRemove(DAYS_FOR_REMOVE_MARK, DAYS_FOR_REMOVE);
 
     }

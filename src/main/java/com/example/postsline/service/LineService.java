@@ -20,7 +20,7 @@ public class LineService {
 
     public List<PostWithLikesInfoDto> getAllPostInfoList() {
 
-        log.info("- -  @GetMapping(value = \"/post-line/post-info/all\") ");
+        log.debug("- -  @GetMapping(value = \"/post-line/post-info/all\") ");
         return messengerClient.getAllPosts();
 
     }

@@ -4,11 +4,9 @@ import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import jakarta.validation.constraintvalidation.SupportedValidationTarget;
 import jakarta.validation.constraintvalidation.ValidationTarget;
-import lombok.extern.slf4j.Slf4j;
 
 import java.util.Objects;
 
-@Slf4j
 @SupportedValidationTarget(ValidationTarget.PARAMETERS)
 public class ValidParamsForPostListValidator implements ConstraintValidator<ValidParamsForPostList, Object[]> {
 

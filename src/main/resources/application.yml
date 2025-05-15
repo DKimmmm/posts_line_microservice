@@ -1,11 +1,16 @@
 server:
-  port: 8099
+
+  port: ${SERVER_PORT}
+
+  servlet:
+    context-path: ${PROJECT_API}
 
 spring:
   application:
-    name: postsline-service
+    name: ${PROJECT_NAME}
+
 feign:
   client:
     config:
       user-service:
-        url: http://localhost:8081/uhab
+        url: ${FEIGN_CLIENT_CONFIG_USER_SERVICE_URL}

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Slf4j
 @RestController
 @RequestMapping("/post-line")
 @RequiredArgsConstructor
@@ -34,12 +33,10 @@ public class LineController {
 
     @GetMapping("/by-params")
     @ValidParamsForPostList
-    public ResponseEntity<List<PostWithLikesInfoDto>> getPostInfoListByParams(
-            @RequestParam(required = false) Integer pageSize,
-            @RequestParam(required = false) Boolean isSortedByLikesAndComments,
-            @RequestParam(required = false) String searchedBy
-    ) {
-        log.info("{} {} {}", pageSize, isSortedByLikesAndComments, searchedBy);
+    public ResponseEntity<List<PostWithLikesInfoDto>> getPostInfoListByParams(@RequestParam(required = false) Integer pageSize,
+                                                                              @RequestParam(required = false) Boolean isSortedByLikesAndComments,
+                                                                              @RequestParam(required = false) String searchedBy) {
+
         return ResponseEntity.ok(
                 lineService.getAllByParams(
                         pageSize, isSortedByLikesAndComments, searchedBy
