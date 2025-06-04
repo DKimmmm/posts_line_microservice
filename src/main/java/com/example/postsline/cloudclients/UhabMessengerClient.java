@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@FeignClient(name = "user-service", url = "http://localhost:8081/uhab")
+@FeignClient(name = "user-service", url = "${feign.client.config.user-service.url}")//)
 public interface UhabMessengerClient {
 
     @GetMapping(value = "/post-line/post-info/all")
